@@ -1,4 +1,4 @@
-import { afterNextRender, afterRender, Component, effect } from '@angular/core';
+import { afterNextRender, afterRender, Component, effect, signal } from '@angular/core';
 
 const log = ( ...messages: string[] ) => {
   console.log(`${ messages[0] } %c${messages.slice(1).join(', ')}`, 'color: #bada55')
@@ -10,6 +10,11 @@ const log = ( ...messages: string[] ) => {
   templateUrl: './home-page.component.html',
 })
 export class HomePageComponent {
+
+  traditionalProperty = 'Tito';
+
+  signalProperty = signal('Tito');
+
 
   basicEffect = effect((cleanup) => {
 
@@ -23,6 +28,11 @@ export class HomePageComponent {
 
   constructor() {
     log('Constructor llamado');
+
+    setTimeout(() => {
+      this.traditionalProperty = 'Andrea';
+      this.signalProperty.set('Andrea');
+    }, 2000);
 
   }
 
@@ -75,5 +85,13 @@ export class HomePageComponent {
   afterRenderEffect = afterRender( () => {
     log("afterRender", "Runs every time all components have been rendered to the DOM.")
   });
+
+  changeTraditional() {
+    this.traditionalProperty = 'Mirna';
+  }
+
+  changeSignal() {
+    this.signalProperty.set('Mirna');
+  }
 
 }

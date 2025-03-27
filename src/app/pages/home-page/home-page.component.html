@@ -1,2 +1,11 @@
 <h1>Home Page</h1>
 <hr>
+
+<h3>Tradicional {{ traditionalProperty }}</h3>
+<h3>Signal {{ signalProperty() }}</h3>
+
+<div style="display: flex; justify-content: space-around; width: 250px;">
+  <button (click)="changeTraditional()">Cambiar Tradicional</button>
+  <button (click)="changeSignal()">Cambiar Signal</button>
+</div>
+
