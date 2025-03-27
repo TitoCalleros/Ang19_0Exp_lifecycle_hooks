@@ -30,7 +30,7 @@ export class HomePageComponent {
     log('Constructor llamado');
 
     setTimeout(() => {
-      this.traditionalProperty = 'Andrea';
+      // this.traditionalProperty = 'Andrea';
       this.signalProperty.set('Andrea');
     }, 2000);
 
